@@ -94,6 +94,8 @@ def result(sec):
 
 #from second_supportive_file import result
 
+import random
+
 key = 0
 sec = [-1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12, -13, -14, -15, -16]
 choice = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -136,62 +138,42 @@ def nous(x):
 
     sec[x] = 2
     if ((sec[0] == sec[1] == sec[2]) == True or
-            (sec[4] == sec[5] == sec[6]) == True or
-            (sec[8] == sec[9] == sec[10]) == True or
-            (sec[0] == sec[4] == sec[8]) == True or
-            (sec[1] == sec[5] == sec[9]) == True or
-            (sec[2] == sec[6] == sec[10]) == True or
-            (sec[0] == sec[5] == sec[10]) == True or
-            (sec[2] == sec[5] == sec[8]) == True or
-            (sec[1] == sec[2] == sec[3]) == True or
-            (sec[5] == sec[6] == sec[7]) == True or
-            (sec[9] == sec[10] == sec[11]) == True or
-            (sec[3] == sec[7] == sec[11]) == True or
-            (sec[1] == sec[6] == sec[11]) == True or
-            (sec[3] == sec[6] == sec[9]) == True or
-            (sec[12] == sec[13] == sec[14]) == True or
-            (sec[4] == sec[8] == sec[12]) == True or
-            (sec[5] == sec[9] == sec[13]) == True or
-            (sec[6] == sec[10] == sec[14]) == True or
-            (sec[4] == sec[9] == sec[14]) == True or
-            (sec[6] == sec[9] == sec[12]) == True or
-            (sec[13] == sec[14] == sec[15]) == True or
-            (sec[7] == sec[11] == sec[15]) == True or
-            (sec[5] == sec[10] == sec[15]) == True or
-            (sec[7] == sec[10] == sec[13]) == True):
-                sec[x] = nous_xod
-                priority_move.append(x)
-                priority_summ.append(10)
-                return 2
+        (sec[4] == sec[5] == sec[6]) == True or
+        (sec[8] == sec[9] == sec[10]) == True or
+        (sec[0] == sec[4] == sec[8]) == True or
+        (sec[1] == sec[5] == sec[9]) == True or
+        (sec[2] == sec[6] == sec[10]) == True or
+        (sec[0] == sec[5] == sec[10]) == True or
+        (sec[2] == sec[5] == sec[8]) == True or
+        (sec[1] == sec[2] == sec[3]) == True or
+        (sec[5] == sec[6] == sec[7]) == True or
+        (sec[9] == sec[10] == sec[11]) == True or
+        (sec[3] == sec[7] == sec[11]) == True or
+        (sec[1] == sec[6] == sec[11]) == True or
+        (sec[3] == sec[6] == sec[9]) == True or
+        (sec[12] == sec[13] == sec[14]) == True or
+        (sec[4] == sec[8] == sec[12]) == True or
+        (sec[5] == sec[9] == sec[13]) == True or
+        (sec[6] == sec[10] == sec[14]) == True or
+        (sec[4] == sec[9] == sec[14]) == True or
+        (sec[6] == sec[9] == sec[12]) == True or
+        (sec[13] == sec[14] == sec[15]) == True or
+        (sec[7] == sec[11] == sec[15]) == True or
+        (sec[5] == sec[10] == sec[15]) == True or
+        (sec[7] == sec[10] == sec[13]) == True):
+        sec[x] = nous_xod
+        priority_move.append(x)
+        priority_summ.append(10)
+        return 2
     sec[x] = nous_xod
-    if x == 5 and sec[5] < 0 and choice[x] == 0:
+    if x in [5, 6, 9, 10] and choice[x] == 0 and sec[x] < 0:
         sum_o_cells = 0
-        for k in [0, 1, 2, 4, 6, 8, 9, 10]:
+        for k in [x-5, x-4, x-3, x-1, x+1, x+3, x+4, x+5]:
             sum_o_cells += choice[k]
         priority_move.append(x)
         priority_summ.append(sum_o_cells)
         return 2
-    if x == 6 and sec[6] < 0 and choice[x] == 0:
-        sum_o_cells = 0
-        for k in [1, 2, 3, 5, 7, 9, 10, 11]:
-            sum_o_cells += choice[k]
-        priority_move.append(x)
-        priority_summ.append(sum_o_cells)
-        return 2
-    if x == 9 and sec[9] < 0 and choice[x] == 0:
-        sum_o_cells = 0
-        for k in [4, 5, 6, 8, 10, 12, 13, 14]:
-            sum_o_cells += choice[k]
-        priority_move.append(x)
-        priority_summ.append(sum_o_cells)
-        return 2
-    if x == 10 and sec[10] < 0 and choice[x] == 0:
-        sum_o_cells = 0
-        for k in [5, 6, 7, 9, 11, 13, 14, 15]:
-            sum_o_cells += choice[k]
-        priority_move.append(x)
-        priority_summ.append(sum_o_cells)
-        return 2
+
     if sec[5] == 3 and choice[10] == 0:
         priority_move.append(10)
         priority_summ.append(3)
@@ -222,7 +204,9 @@ def nous(x):
         priority_move.append(x)
         priority_summ.append(sum_o_cells)
         return 2
-
+random_first = random.randint(0,15)
+sec[random_first] = 2
+choice[random_first] = 1
 print("||||||||||||||||||||||||||||||||||||||||||||||||||"
       "\n||\t\t\t||\t\t\t||\t\t\t||\t\t\t||\n||\t",
       value(sec[0]), "\t||\t", value(sec[1]), "\t||\t", value(sec[2]), "\t||\t", value(sec[3]),
