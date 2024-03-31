@@ -32,9 +32,9 @@ def value(x):
     if x == -16:
         return"1️⃣6️⃣"
     if x == 2:
-        return "⭕️"
+        return "⭕️⭕️"
     if x == 3:
-        return "❌"
+        return "❌❌"
 
 def result(sec):
     if ((sec[0] == sec[1] == sec[2] == 2) or
